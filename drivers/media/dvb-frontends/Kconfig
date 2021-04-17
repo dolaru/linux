@@ -77,6 +77,13 @@ config DVB_M88DS3103
 	help
 	  Say Y when you want to support this frontend.
 
+config DVB_CXD2850
+	tristate "Sony CXD2850"
+	depends on DVB_CORE && I2C
+	default m if DVB_FE_CUSTOMISE
+	help
+	  Say Y when you want to support this frontend.
+
 comment "Multistandard (cable + terrestrial) frontends"
 	depends on DVB_CORE
 
@@ -123,6 +130,36 @@ config DVB_MN88473
 	default m if !MEDIA_SUBDRV_AUTOSELECT
 	help
 	  Say Y when you want to support this frontend.
+
+config DVB_TDA18272
+	tristate "NXP TDA18272 based"
+	depends on DVB_CORE && I2C
+	default m if DVB_FE_CUSTOMISE
+	help
+	  A silicon tuner module. Say Y when you want to support this tuner.
+
+config DVB_CXD2817
+	tristate "Sony CXD2817"
+	depends on DVB_CORE && I2C
+	default m if DVB_FE_CUSTOMISE
+	help
+	  Say Y when you want to support this frontend.
+
+config DVB_CXD2861
+	tristate "Sony CXD2861"
+	depends on DVB_CORE && I2C
+	default m if DVB_FE_CUSTOMISE
+	help
+	  Say Y when you want to support this tuner
+
+config DVB_CXD2843
+        tristate "Sony CXD2843"
+        depends on DVB_CORE && I2C
+        default m if DVB_FE_CUSTOMISE
+        help
+          Say Y when you want to support this tuner
+
+source "drivers/media/dvb-frontends/tda18250/Kconfig"
 
 comment "DVB-S (satellite) frontends"
 	depends on DVB_CORE
@@ -934,6 +971,13 @@ config DVB_HELENE
 	default m if !MEDIA_SUBDRV_AUTOSELECT
 	help
 	  Say Y when you want to support this frontend.
+
+config DVB_A8290
+	tristate "Allegro A8290 SEC controller"
+	depends on DVB_CORE && I2C
+	default m if DVB_FE_CUSTOMISE
+	help
+	  A SEC controller.
 
 comment "Common Interface (EN50221) controller drivers"
 	depends on DVB_CORE
